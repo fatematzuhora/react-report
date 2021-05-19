@@ -1,3 +1,5 @@
+{
+    "appointments" :
 [
     {
         "id": 1,
@@ -10000,3 +10002,4 @@
         "practitioner_id": 10
     }
 ]
+}

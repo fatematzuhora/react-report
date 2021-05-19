@@ -1,0 +1,4 @@
+// Auth Action Types
+export const STORE_DATA = "STORE_DATA";
+export const SET_PRACTITIONER = "SET_PRACTITIONER";
+export const UNSET_PRACTITIONER = "UNSET_PRACTITIONER";

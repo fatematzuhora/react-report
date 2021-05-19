@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+
+// COLORS
+$color-grey: #4b5c70;
+$color-grey-light: #8994a1;
+
+html {
+    // This defines what 1rem is
+    // Normally 1 rem = 16px (browser assumes 'font-size: 100%' means 1rem or 16px). We want to make 1rem = 10px to simplify our calculation.
+    // If we make that then whenever We need to write 22px we can write 2.2rem, for 18px we can use 1.8rem.
+    // 1 rem = 10px; 10px/16px = 62.5%
+    font-size: 62.5% !important;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+h1 {
+    color: $color-grey;
+    font-family: "Quicksand";
+    font-size: 5.6rem;
+}
+
+h2 {
+    color: $color-grey;
+    font-family: "Quicksand";
+    font-size: 4rem;
+}
+
+h3 {
+    color: $color-grey;
+    font-family: "Quicksand";
+    font-size: 2.8rem;
+}
+
+h4 {
+    color: $color-grey;
+    font-family: "Quicksand";
+    font-size: 2rem;
+}
+
+p {
+    color: $color-grey-light;
+    font-size: 1.6rem;
+    font-family: "Oxygen";
+}
+
+.ant-input-number-handler-wrap {
+    visibility: hidden;
+}

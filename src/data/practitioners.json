@@ -1,3 +1,5 @@
+{
+    "practitioners" :
 [
     {
         "id": 1,
@@ -40,3 +42,4 @@
         "name": "Jacinthe Phippard"
     }
 ]
+}
