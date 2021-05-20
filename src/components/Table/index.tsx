@@ -119,6 +119,7 @@ const BaseTable = (props: any) => {
                     defaultPageSize: 5,
                     showSizeChanger: true,
                 }}
+                className={tableStyle.table}
             />
         </Card>
     )
