@@ -1,4 +1,6 @@
 // Auth Action Types
 export const STORE_DATA = "STORE_DATA";
+export const SET_DATE_RANGE = "SET_DATE_RANGE";
+export const UNSET_DATE_RANGE = "UNSET_DATE_RANGE";
 export const SET_PRACTITIONER = "SET_PRACTITIONER";
 export const UNSET_PRACTITIONER = "UNSET_PRACTITIONER";

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ReportPage } from 'pages';
 import { connect } from 'react-redux';
-import { storeData, unsetPractitioner } from 'store/actions';
+import { storeData, unsetDateRange, unsetPractitioner } from 'store/actions';
 
 import { appointments } from 'data/appointments.json';
 import { practitioners } from 'data/practitioners.json';
@@ -13,6 +13,7 @@ const App: React.FC = (props: any) => {
 
     if ( (props.appData.appointments.length > 0) && (props.appData.practitioners.length > 0) ) {
       props.unsetAppPractitioner(true);
+      props.unsetAppDateRange(true);
     } else {
       props.storeAppData(appointments, practitioners);
     }
@@ -38,6 +39,9 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   storeAppData: (appointments: any[], practitioners: any[]) => {
     dispatch(storeData(appointments, practitioners));
+  },
+  unsetAppDateRange: (status: boolean) => {
+    dispatch(unsetDateRange(status));
   },
   unsetAppPractitioner: (status: boolean) => {
     dispatch(unsetPractitioner(status));

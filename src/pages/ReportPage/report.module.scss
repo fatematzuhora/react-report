@@ -1,0 +1,12 @@
+// COLORS
+$color-grey-light: #8994a1;
+
+.page {
+    background-color: rgba($color-grey-light, .3);
+    padding: 3rem;
+    min-height: 100vh;
+}
+
+.gutter {
+    padding: 0 .5rem;
+}

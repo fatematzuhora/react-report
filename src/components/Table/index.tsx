@@ -1,29 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Card, DatePicker, Row, Select, Table } from 'antd';
 import { connect } from 'react-redux';
-import { unsetPractitioner } from 'store/actions';
+import { setDateRange, unsetDateRange, setPractitioner, unsetPractitioner } from 'store/actions';
 import tableStyle from './table.module.scss';
 
 const BaseTable = (props: any) => {
-    const [tableData, setTableData] = useState<any[]>([]);
-    const [selectedPractitioner, setSelectedPractitioner] = useState<number | undefined>(undefined);
+    const [dates, setDates] = useState<any[]>([]);
     const practitionerList = props.appData.practitioners;
-
+    
     useEffect(() => {
-        if (selectedPractitioner) {
-            const data = props.appData.appointments.filter((a: any) => {
-                if (a.practitioner_id === selectedPractitioner) {
-                    return a;
-                }
-            });
-            setTableData(data);
-
+        if (dates) {
+            if (dates[0] && dates[1]) {
+                props.setAppDateRange(dates);
+            }
         } else {
-            setTableData(props.appData.appointments);
+            props.unsetAppDateRange(true);
         }
-
-    }, [selectedPractitioner])
-
+    }, [dates])
 
     const practitionerSelectOptions = practitionerList.map((practitioner: {
         id: number,
@@ -37,7 +30,7 @@ const BaseTable = (props: any) => {
     })
 
     const handleSelectPractitioner = async(id: number) => {
-        setSelectedPractitioner(id);
+        props.setAppPractitioner(id);
     }
 
     const renderPractitioner = (id: number) => {
@@ -84,11 +77,15 @@ const BaseTable = (props: any) => {
                 <h3>Appointments</h3>
 
                 <Row className={tableStyle.inputContainer}>
-                    <DatePicker.RangePicker className={tableStyle.tableInputs} />
+                    <DatePicker.RangePicker
+                        className={tableStyle.tableInputs}
+                        onCalendarChange={(val: any) => setDates(val)}
+                    />
                     
                     <div className={tableStyle.search}>
                         <Select
                             showSearch
+                            allowClear
                             className={tableStyle.tableInputs}
                             placeholder="Search Practitioner..."
                             optionFilterProp="children"
@@ -99,11 +96,10 @@ const BaseTable = (props: any) => {
                         >
                             {practitionerSelectOptions}
                         </Select>
-                        {selectedPractitioner ?
+                        {props.appData.practitioner_id ?
                             <span className={tableStyle.search_filter}
                                 onClick={() => {
-                                    setTableData(props.appData.appointments);
-                                    setSelectedPractitioner(undefined);
+                                    props.unsetAppPractitioner(true);
                                 }}
                             >
                                 clear
@@ -118,7 +114,7 @@ const BaseTable = (props: any) => {
             <Table
                 columns={columns}
                 rowKey={(record: any) => record.id}
-                dataSource={tableData}
+                dataSource={props.appData.table_data}
                 pagination={{
                     defaultPageSize: 5,
                     showSizeChanger: true,
@@ -134,6 +130,15 @@ const mapStateToProps = (state: any) => ({
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
+    setAppDateRange: (dates: []) => {
+        dispatch(setDateRange(dates));
+    },
+    unsetAppDateRange: (status: boolean) => {
+        dispatch(unsetDateRange(status));
+    },
+    setAppPractitioner: (practitioner_id: number) => {
+        dispatch(setPractitioner(practitioner_id));
+    },
     unsetAppPractitioner: (status: boolean) => {
       dispatch(unsetPractitioner(status));
     },

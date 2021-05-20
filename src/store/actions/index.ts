@@ -1,4 +1,10 @@
-import { STORE_DATA, SET_PRACTITIONER, UNSET_PRACTITIONER } from 'store/actions/types';
+import {
+    STORE_DATA,
+    SET_DATE_RANGE,
+    UNSET_DATE_RANGE,
+    SET_PRACTITIONER,
+    UNSET_PRACTITIONER
+} from 'store/actions/types';
 
 // app actions
 export const storeData = (
@@ -13,6 +19,26 @@ export const storeData = (
         }
     }
 };
+
+
+export const setDateRange = (dates: any[]) => {
+    return {
+        type: SET_DATE_RANGE,
+        payload: {
+            dates
+        }
+    }
+}
+
+
+export const unsetDateRange = (status: boolean) => {
+    return {
+        type: UNSET_DATE_RANGE,
+        payload: {
+            status
+        }
+    }
+}
 
 
 export const setPractitioner = (practitioner_id: number) => {
