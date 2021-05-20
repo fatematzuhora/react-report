@@ -1,5 +1,5 @@
 # react-report
-An interactive web app to generate a financial report to analyse profitability of the practitioners on each month.
+An interactive web app to generate a financial report to analyze the profitability of the practitioners each month.
 
 The Front-End application is build using the [ReactJS](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Redux](https://redux.js.org/).
 
