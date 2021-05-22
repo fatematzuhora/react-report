@@ -120,6 +120,7 @@ const BaseTable = (props: any) => {
                     showSizeChanger: true,
                 }}
                 className={tableStyle.table}
+                scroll={{ x: 240 }}
             />
         </Card>
     )
