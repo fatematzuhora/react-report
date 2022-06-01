@@ -50,6 +50,6 @@
     "@types/antd": "^1.0.0",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
-    "node-sass": "^5.0.0"
+    "node-sass": "^7.0.0"
   }
 }
